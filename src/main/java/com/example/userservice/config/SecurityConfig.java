@@ -29,9 +29,7 @@ public class SecurityConfig {
                 )
                 .oauth2Login(oauth2 -> oauth2
                         .userInfoEndpoint(userInfo -> userInfo.userService(customOAuth2UserService))
-                        // 여기 successHandler 등록
                         .successHandler(oAuth2LoginSuccessHandler)
-                        .defaultSuccessUrl("/home")
                 );
 
         return http.build();

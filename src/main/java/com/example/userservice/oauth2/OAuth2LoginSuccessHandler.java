@@ -25,16 +25,11 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
         String email = oauthUser.getAttribute("email");
         String token = jwtUtil.generateToken(email);
 
-        // JWT를 HttpOnly 쿠키로 응답에 추가
+        System.out.println("oauth2 success" + token);
 
-        Cookie cookie = new Cookie("jwt", token);
-        cookie.setHttpOnly(true);
-        cookie.setPath("/");
-        cookie.setMaxAge(3600);
-        response.addCookie(cookie);
+        String redirectUrl = "http://localhost:3000/oauth2/redirect?token=" + token;
 
-        // 로그인 후 리다이렉트
-        response.sendRedirect("/home");
+        response.sendRedirect(redirectUrl);
     }
 }
 
