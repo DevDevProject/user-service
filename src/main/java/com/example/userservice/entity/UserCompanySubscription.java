@@ -1,8 +1,10 @@
 package com.example.userservice.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
+@Getter
 public class UserCompanySubscription {
 
     @Id
