@@ -8,15 +8,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CorsConfig {
 
-    String allowedOrigin = "http://localhost:3000";
-
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins(allowedOrigin) // React 앱 주소
+                        .allowedOriginPatterns("*")
                         .allowedMethods("*")
                         .allowCredentials(true);
             }

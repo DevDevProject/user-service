@@ -12,10 +12,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/user")
 public class UserController {
 
-    // OAuth2User에서 JWT를 꺼내 클라이언트에게 전달하는 샘플
     @GetMapping("/me")
     public ResponseEntity<Map<String, Object>> getCurrentUser(@AuthenticationPrincipal OAuth2User oauth2User) {
         if (oauth2User == null) {

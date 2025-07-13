@@ -14,5 +14,13 @@ public class UserRecruitSubscription {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    private Long companyId;
+    private Long recruitId;
+
+    public static UserRecruitSubscription create(User user, Long recruitId) {
+        UserRecruitSubscription subscription = new UserRecruitSubscription();
+        subscription.user = user;
+        subscription.recruitId = recruitId;
+
+        return subscription;
+    }
 }

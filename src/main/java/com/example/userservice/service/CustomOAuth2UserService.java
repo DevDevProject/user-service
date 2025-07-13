@@ -45,9 +45,13 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 .filter(e -> !e.isBlank())
                 .orElse(userCommon.getName());
 
+        String providerId = userCommon.getProviderId();
+
         Map<String, Object> attributes = new HashMap<>(oauthUser.getAttributes());
+        attributes.put("email", email);
+        attributes.put("provider", provider);
+        attributes.put("providerId", providerId);
         attributes.put("name", email);
-        attributes.put("jwt", jwtUtil.generateToken(email));
 
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")),
